@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santiye Yapilacaklar</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f5f3ee;--sf:#fff;--sf2:#eeece6;--sf3:#e4e1d8;
+  --bd:rgba(0,0,0,0.09);--bd2:rgba(0,0,0,0.16);
+  --tx:#1c1b17;--tx2:#6a6860;--tx3:#a09e98;
+  --or:#d4640a;--or2:#fef0e4;
+  --bl:#1a5fa8;--bl2:#e8f0fa;
+  --gr:#1a8c5a;--gr2:#e4f5ec;
+  --rd:#c0392b;--rd2:#fdecea;
+  --am:#b07d10;--am2:#fdf5e0;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#161512;--sf:#1e1d19;--sf2:#252420;--sf3:#2d2c27;
+  --bd:rgba(255,255,255,0.08);--bd2:rgba(255,255,255,0.15);
+  --tx:#f0ede4;--tx2:#9e9b92;--tx3:#5a5852;
+  --or:#f5852a;--or2:#2a1a08;
+  --bl:#4a90d9;--bl2:#0d1f35;
+  --gr:#34c27a;--gr2:#0a2018;
+  --rd:#e05c4e;--rd2:#2a0e0b;
+  --am:#d4a820;--am2:#211a05;
+}}
+body{background:var(--bg);color:var(--tx);font-family:Arial,sans-serif;min-height:100vh;padding-bottom:80px;}
+.hdr{background:var(--sf);border-bottom:2px solid var(--bd2);padding:13px 14px;position:sticky;top:0;z-index:99;display:flex;align-items:center;gap:10px;}
+.htl{font-size:15px;font-weight:700;flex:1;}.htl b{color:var(--or);}
+.dot{width:10px;height:10px;border-radius:50%;background:#ccc;flex-shrink:0;}
+.dot.ok{background:var(--gr);}.dot.sy{background:var(--am);}.dot.er{background:var(--rd);}
+.abtn{padding:8px 13px;background:var(--or);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px 14px 8px;}
+.sc{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:10px 6px;text-align:center;}
+.sn{font-size:22px;font-weight:700;}.sl{font-size:9px;color:var(--tx3);margin-top:2px;text-transform:uppercase;}
+.sc.s0 .sn{color:var(--or);}.sc.s1 .sn{color:var(--am);}.sc.s2 .sn{color:var(--gr);}
+.pbw{padding:0 14px 10px;}
+.pb{height:6px;background:var(--sf3);border-radius:3px;overflow:hidden;}
+.pbf{height:100%;background:var(--gr);border-radius:3px;transition:width 0.3s;}
+.pbl{font-size:11px;color:var(--tx2);margin-top:4px;text-align:right;}
+.sw{padding:0 14px 8px;}
+.si{width:100%;background:var(--sf);border:1px solid var(--bd2);border-radius:20px;padding:9px 15px;font-size:13px;color:var(--tx);outline:none;}
+.frow{padding:0 14px 6px;display:flex;gap:6px;overflow-x:auto;}
+.fb{font-size:12px;padding:6px 13px;border:1px solid var(--bd2);border-radius:20px;background:var(--sf);color:var(--tx2);cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.fb.ac{background:var(--or);color:#fff;border-color:var(--or);}
+.fb.f0.ac{background:#bf360c;border-color:#bf360c;}
+.fb.f1.ac{background:#827717;border-color:#827717;}
+.fb.f2.ac{background:var(--gr);border-color:var(--gr);}
+.chw{padding:0 14px 10px;display:flex;gap:6px;overflow-x:auto;}
+.ch{font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;white-space:nowrap;flex-shrink:0;border:2px solid transparent;}
+.lst{padding:0 14px;}
+.itm{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+.itm.dn{opacity:0.5;}
+.itp{display:flex;align-items:flex-start;gap:10px;padding:12px 12px 10px;}
+.inum{font-size:11px;color:var(--tx3);min-width:20px;margin-top:2px;}
+.ibod{flex:1;min-width:0;}
+.ittl{font-size:13px;font-weight:600;line-height:1.4;}
+.itm.dn .ittl{text-decoration:line-through;color:var(--tx3);}
+.imeta{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap;}
+.isnt{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;}
+.ist{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;cursor:pointer;border:none;}
+.s0{background:#fff3e0;color:#bf360c;}.s1{background:#fffde7;color:#827717;}.s2{background:#e8f5e9;color:#1b5e20;}
+@media(prefers-color-scheme:dark){.s0{background:#3a1a00;color:#ffaa44;}.s1{background:#2a2200;color:#e0c840;}.s2{background:#0a2010;color:#44cc88;}}
+.ipv{font-size:11px;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ipv.ak{color:var(--bl);}.ipv.nt{color:var(--am);}
+.itgl{width:32px;height:32px;border:none;background:none;cursor:pointer;color:var(--tx3);font-size:16px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.itgl.op{color:var(--or);}
+.iexp{border-top:1px solid var(--bd);background:var(--sf2);display:none;padding:11px 12px 12px;}
+.iexp.op{display:block;}
+.elbl{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--tx3);text-transform:uppercase;margin:9px 0 4px;}
+.elbl:first-child{margin-top:0;}
+.einp{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--tx);font-family:inherit;resize:vertical;min-height:50px;outline:none;line-height:1.5;}
+.einp:focus{border-color:var(--or);}
+.erow{display:flex;gap:7px;margin-top:9px;}
+.esv{flex:1;padding:10px;background:var(--or);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;}
+.edl{width:40px;padding:10px;background:var(--rd2);color:var(--rd);border:1px solid var(--rd);border-radius:8px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.mov{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;display:none;align-items:flex-end;justify-content:center;}
+.mov.op{display:flex;}
+.mbox{background:var(--sf);border-radius:16px 16px 0 0;padding:18px 16px 32px;width:100%;max-width:520px;}
+.mhnd{width:34px;height:4px;background:var(--bd2);border-radius:2px;margin:0 auto 16px;}
+.mbox h3{font-size:15px;font-weight:700;margin-bottom:14px;}
+.mlbl{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--tx3);text-transform:uppercase;margin:10px 0 4px;}
+.mlbl:first-of-type{margin-top:0;}
+.mbox input,.mbox textarea,.mbox select{width:100%;background:var(--sf2);border:1px solid var(--bd);border-radius:8px;padding:9px 11px;font-size:13px;color:var(--tx);font-family:inherit;outline:none;}
+.mbox input:focus,.mbox textarea:focus,.mbox select:focus{border-color:var(--or);}
+.mbox textarea{min-height:60px;resize:vertical;line-height:1.5;}
+.mbox select{height:40px;}
+.mbtns{display:flex;gap:8px;margin-top:14px;}
+.msv{flex:1;padding:11px;background:var(--or);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;}
+.mcn{padding:11px 16px;background:var(--sf2);color:var(--tx2);border:1px solid var(--bd2);border-radius:9px;font-size:13px;cursor:pointer;}
+.bot{position:fixed;bottom:0;left:0;right:0;background:var(--sf);border-top:1px solid var(--bd);padding:10px 14px;display:flex;align-items:center;gap:8px;z-index:99;}
+.blbl{font-size:11px;color:var(--tx3);flex:1;}
+.rbtn{width:34px;height:34px;border:1px solid var(--bd2);border-radius:8px;background:var(--sf2);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--tx2);font-size:14px;}
+.empty{text-align:center;padding:40px 20px;color:var(--tx3);font-size:13px;}
+.tst{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);background:#222;color:#fff;font-size:12px;padding:8px 16px;border-radius:18px;z-index:300;opacity:0;transition:opacity 0.2s;pointer-events:none;white-space:nowrap;}
+.tst.sh{opacity:1;}
+.err-box{background:var(--rd2);border:1px solid var(--rd);border-radius:10px;padding:14px;margin:14px;font-size:13px;color:var(--rd);text-align:center;display:none;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <span style="font-size:19px">&#127959;</span>
+  <div class="htl">Santiye <b>Yapilacaklar</b></div>
+  <button class="abtn" onclick="openModal()">+ Yeni Gorev</button>
+  <div class="dot sy" id="dot"></div>
+</div>
+<div class="stats">
+  <div class="sc s0"><div class="sn" id="c0">-</div><div class="sl">Baslanmadi</div></div>
+  <div class="sc s1"><div class="sn" id="c1">-</div><div class="sl">Devam Ediyor</div></div>
+  <div class="sc s2"><div class="sn" id="c2">-</div><div class="sl">Tamamlandi</div></div>
+</div>
+<div class="pbw"><div class="pb"><div class="pbf" id="pbf" style="width:0%"></div></div><div class="pbl" id="pbl">Yukleniyor...</div></div>
+<div class="sw"><input class="si" type="text" id="srch" placeholder="Is, not veya aksiyon ara..."></div>
+<div class="frow">
+  <button class="fb ac" id="fa" onclick="setF('',this)">Tumu</button>
+  <button class="fb f0" onclick="setF('0',this)">Baslanmadi</button>
+  <button class="fb f1" onclick="setF('1',this)">Devam Ediyor</button>
+  <button class="fb f2" onclick="setF('2',this)">Tamamlandi</button>
+</div>
+<div class="chw" id="chw"></div>
+<div class="err-box" id="errBox">Firebase'e baglanılamadi. Internet baglantinizi kontrol edin ve sayfayi yenileyin.</div>
+<div class="lst" id="lst"></div>
+<div class="mov" id="modal">
+  <div class="mbox">
+    <div class="mhnd"></div>
+    <h3>Yeni Gorev Ekle</h3>
+    <div class="mlbl">Santiye</div>
+    <select id="mSnt"></select>
+    <div class="mlbl">Yapilacak Is *</div>
+    <textarea id="mIs" placeholder="Ne yapilacak?" style="min-height:68px"></textarea>
+    <div class="mlbl">Yapilan Aksiyon (opsiyonel)</div>
+    <textarea id="mAk" placeholder="Baslangic notu..."></textarea>
+    <div class="mlbl">Not (opsiyonel)</div>
+    <textarea id="mNt" placeholder="Ek not, hatirlatma..."></textarea>
+    <div class="mbtns">
+      <button class="mcn" onclick="closeModal()">Iptal</button>
+      <button class="msv" onclick="addItem()">+ Ekle</button>
+    </div>
+  </div>
+</div>
+<div class="tst" id="tst"></div>
+<div class="bot">
+  <div class="blbl" id="blbl">Baglaniliyor...</div>
+  <button class="rbtn" onclick="loadData()" title="Yenile"><i class="ti ti-refresh"></i></button>
+</div>
+
+<script>
+// Firebase REST API — SDK gerektirmez, her tarayicida calisir
+var FB_URL = "https://santiye-takip-a0500-default-rtdb.europe-west1.firebasedatabase.app/santiye/main";
+
+var items = [];
+var sants = [];
+var filt = "";
+var filtSnt = "";
+var openId = null;
+var pollTimer = null;
+
+// ---- Yardimci ----
+function esc(t) {
+  if (!t) return "";
+  return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function setDot(s) {
+  document.getElementById("dot").className = "dot " + s;
+}
+
+function toast(msg) {
+  var el = document.getElementById("tst");
+  el.textContent = msg;
+  el.className = "tst sh";
+  setTimeout(function() { el.className = "tst"; }, 2000);
+}
+
+function showErr(show) {
+  document.getElementById("errBox").style.display = show ? "block" : "none";
+}
+
+// ---- Firebase REST ----
+function fbGet(cb) {
+  setDot("sy");
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", FB_URL + ".json", true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState !== 4) return;
+    if (xhr.status === 200) {
+      setDot("ok");
+      showErr(false);
+      try {
+        var data = JSON.parse(xhr.responseText);
+        cb(data);
+      } catch(e) { cb(null); }
+    } else {
+      setDot("er");
+      showErr(true);
+      document.getElementById("blbl").textContent = "Baglanti hatasi! Yenile butonuna basin.";
+    }
+  };
+  xhr.onerror = function() {
+    setDot("er");
+    showErr(true);
+    document.getElementById("blbl").textContent = "Baglanti hatasi!";
+  };
+  xhr.send();
+}
+
+function fbPut(data, cb) {
+  setDot("sy");
+  var xhr = new XMLHttpRequest();
+  xhr.open("PATCH", FB_URL + ".json", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState !== 4) return;
+    if (xhr.status === 200) {
+      setDot("ok");
+      if (cb) cb();
+    } else {
+      setDot("er");
+      toast("Kayit hatasi! Tekrar deneyin.");
+    }
+  };
+  xhr.onerror = function() { setDot("er"); toast("Baglanti hatasi!"); };
+  xhr.send(JSON.stringify(data));
+}
+
+// ---- Veri yukle ----
+function loadData() {
+  document.getElementById("blbl").textContent = "Yukleniyor...";
+  fbGet(function(data) {
+    if (!data) {
+      document.getElementById("blbl").textContent = "Veri bulunamadi.";
+      return;
+    }
+    items = data.bekleyen || [];
+    sants = data.santiyeler || [];
+    buildChips();
+    render();
+    var now = new Date();
+    var h = now.getHours();
+    var m = now.getMinutes();
+    document.getElementById("blbl").textContent = "Son guncelleme: " + (h<10?"0"+h:h) + ":" + (m<10?"0"+m:m);
+  });
+}
+
+// Her 30 saniyede bir otomatik yenile
+function startPoll() {
+  if (pollTimer) clearInterval(pollTimer);
+  pollTimer = setInterval(loadData, 30000);
+}
+
+// ---- Chiplar ----
+function buildChips() {
+  var cont = document.getElementById("chw");
+  cont.innerHTML = "";
+  var codes = [];
+  var i, b, s;
+  for (i = 0; i < items.length; i++) {
+    b = items[i];
+    if (b.santiye && codes.indexOf(b.santiye) < 0) codes.push(b.santiye);
+  }
+  for (i = 0; i < sants.length; i++) {
+    s = sants[i];
+    if (codes.indexOf(s.code) < 0) codes.push(s.code);
+  }
+
+  var allC = document.createElement("div");
+  allC.className = "ch";
+  allC.textContent = "Tum Santiyeler";
+  if (filtSnt === "") {
+    allC.style.cssText = "background:var(--tx);color:var(--sf);border-color:var(--tx)";
+  } else {
+    allC.style.cssText = "background:var(--sf);color:var(--tx2);border-color:var(--bd2)";
+  }
+  allC.onclick = function() { filtSnt = ""; buildChips(); render(); };
+  cont.appendChild(allC);
+
+  for (i = 0; i < codes.length; i++) {
+    (function(code) {
+      var found = null;
+      for (var j = 0; j < sants.length; j++) {
+        if (sants[j].code === code) { found = sants[j]; break; }
+      }
+      var color = found ? found.color : "#888";
+      var c = document.createElement("div");
+      c.className = "ch";
+      c.textContent = code;
+      if (filtSnt === code) {
+        c.style.cssText = "background:" + color + ";color:#fff;border-color:" + color;
+      } else {
+        c.style.cssText = "color:" + color + ";border-color:" + color + ";background:transparent";
+      }
+      c.onclick = function() { filtSnt = code; buildChips(); render(); };
+      cont.appendChild(c);
+    })(codes[i]);
+  }
+}
+
+// ---- Filtre ----
+function setF(f, el) {
+  filt = f;
+  var btns = document.querySelectorAll(".fb");
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove("ac");
+  el.classList.add("ac");
+  render();
+}
+
+// ---- Render ----
+var DLBL = ["Baslanmadi", "Devam Ediyor", "Tamamlandi"];
+var DCLS = ["s0", "s1", "s2"];
+
+function render() {
+  var q = (document.getElementById("srch").value || "").toLowerCase();
+  var list = [];
+  var i, b;
+  for (i = 0; i < items.length; i++) {
+    b = items[i];
+    if (filt !== "" && String(b.durum) !== filt) continue;
+    if (filtSnt !== "" && b.santiye !== filtSnt) continue;
+    if (q) {
+      var hit = (b.is||"").toLowerCase().indexOf(q) >= 0 ||
+                (b.not||"").toLowerCase().indexOf(q) >= 0 ||
+                (b.aksiyon||"").toLowerCase().indexOf(q) >= 0;
+      if (!hit) continue;
+    }
+    list.push(b);
+  }
+
+  var base = filtSnt !== "" ? [] : items;
+  if (filtSnt !== "") {
+    for (i = 0; i < items.length; i++) {
+      if (items[i].santiye === filtSnt) base.push(items[i]);
+    }
+  }
+  var c0=0,c1=0,c2=0;
+  for (i = 0; i < base.length; i++) {
+    if (base[i].durum===0) c0++;
+    else if (base[i].durum===1) c1++;
+    else if (base[i].durum===2) c2++;
+  }
+  document.getElementById("c0").textContent = c0;
+  document.getElementById("c1").textContent = c1;
+  document.getElementById("c2").textContent = c2;
+  var pct = base.length ? Math.round(c2 / base.length * 100) : 0;
+  document.getElementById("pbf").style.width = pct + "%";
+  document.getElementById("pbl").textContent = c2 + "/" + base.length + " tamamlandi (" + pct + "%)";
+
+  var cont = document.getElementById("lst");
+  cont.innerHTML = "";
+
+  if (list.length === 0) {
+    cont.innerHTML = '<div class="empty">Bu filtrede gorev yok.</div>';
+    return;
+  }
+
+  for (i = 0; i < list.length; i++) {
+    renderItem(list[i], i + 1);
+  }
+
+  // Event listener
+  cont.onclick = function(e) {
+    var el = e.target || e.srcElement;
+    // Durum butonu
+    var stEl = findParent(el, "ist");
+    if (stEl) { cycleStatus(stEl.getAttribute("data-id")); return; }
+    // Toggle
+    var tgEl = findParent(el, "itgl");
+    if (tgEl) { toggleExp(tgEl.getAttribute("data-id")); return; }
+    // Kaydet
+    var svEl = findParent(el, "esv");
+    if (svEl) { saveItem(svEl.getAttribute("data-id")); return; }
+    // Sil
+    var dlEl = findParent(el, "edl");
+    if (dlEl) { deleteItem(dlEl.getAttribute("data-id")); return; }
+  };
+}
+
+function findParent(el, cls) {
+  var cur = el;
+  for (var i = 0; i < 6; i++) {
+    if (!cur) return null;
+    if (cur.className && cur.className.indexOf(cls) >= 0) return cur;
+    cur = cur.parentNode;
+  }
+  return null;
+}
+
+function renderItem(item, idx) {
+  var found = null;
+  for (var j = 0; j < sants.length; j++) {
+    if (sants[j].code === item.santiye) { found = sants[j]; break; }
+  }
+  var color = found ? found.color : "#888";
+  var isOp = openId === item.id;
+  var num = idx < 10 ? "0" + idx : String(idx);
+
+  var akPrev = item.aksiyon
+    ? '<div class="ipv ak">' + esc(item.aksiyon.substring(0, 55)) + (item.aksiyon.length > 55 ? "..." : "") + '</div>'
+    : "";
+  var ntPrev = item.not
+    ? '<div class="ipv nt">' + esc(item.not.substring(0, 55)) + (item.not.length > 55 ? "..." : "") + '</div>'
+    : "";
+
+  var card = document.createElement("div");
+  card.className = "itm" + (item.durum === 2 ? " dn" : "");
+  card.id = "card-" + item.id;
+
+  var html = '<div class="itp">';
+  html += '<div class="inum">' + num + '</div>';
+  html += '<div class="ibod">';
+  html += '<div class="ittl">' + esc(item.is) + '</div>';
+  html += '<div class="imeta">';
+  html += '<span class="isnt" style="background:' + color + '22;color:' + color + '">' + esc(item.santiye || "-") + '</span>';
+  html += '<button class="ist ' + DCLS[item.durum] + '" data-id="' + item.id + '">' + DLBL[item.durum] + '</button>';
+  html += '</div>';
+  html += akPrev + ntPrev;
+  html += '</div>';
+  html += '<button class="itgl' + (isOp ? " op" : "") + '" data-id="' + item.id + '">';
+  html += isOp ? "&#8963;" : "&#8964;";
+  html += '</button>';
+  html += '</div>';
+
+  html += '<div class="iexp' + (isOp ? " op" : "") + '" id="exp-' + item.id + '">';
+  html += '<div class="elbl">Yapilan Aksiyon</div>';
+  html += '<textarea class="einp" id="ak-' + item.id + '" placeholder="Kim yapti? Ne yapildi? Tarih?">' + esc(item.aksiyon || "") + '</textarea>';
+  html += '<div class="elbl">Not</div>';
+  html += '<textarea class="einp" id="nt-' + item.id + '" placeholder="Ek not, hatirlatma...">' + esc(item.not || "") + '</textarea>';
+  html += '<div class="erow">';
+  html += '<button class="esv" data-id="' + item.id + '">Kaydet</button>';
+  html += '<button class="edl" data-id="' + item.id + '">&#128465;</button>';
+  html += '</div>';
+  html += '</div>';
+
+  card.innerHTML = html;
+  document.getElementById("lst").appendChild(card);
+}
+
+function cycleStatus(id) {
+  var item = null;
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].id === id) { item = items[i]; break; }
+  }
+  if (!item) return;
+  item.durum = (item.durum + 1) % 3;
+  fbPut({bekleyen: items}, function() {
+    toast(DLBL[item.durum]);
+  });
+  render();
+}
+
+function toggleExp(id) {
+  openId = (openId === id) ? null : id;
+  render();
+  if (openId) {
+    setTimeout(function() {
+      var el = document.getElementById("card-" + openId);
+      if (el) el.scrollIntoView({behavior:"smooth", block:"nearest"});
+    }, 80);
+  }
+}
+
+function saveItem(id) {
+  var item = null;
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].id === id) { item = items[i]; break; }
+  }
+  if (!item) return;
+  var akEl = document.getElementById("ak-" + id);
+  var ntEl = document.getElementById("nt-" + id);
+  item.aksiyon = akEl ? akEl.value : "";
+  item.not = ntEl ? ntEl.value : "";
+  fbPut({bekleyen: items}, function() {
+    toast("Kaydedildi");
+    openId = null;
+    render();
+  });
+}
+
+function deleteItem(id) {
+  if (!confirm("Bu gorevi silmek istiyor musunuz?")) return;
+  var newItems = [];
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].id !== id) newItems.push(items[i]);
+  }
+  items = newItems;
+  fbPut({bekleyen: items}, function() { toast("Silindi"); });
+  openId = null;
+  render();
+}
+
+// ---- Modal ----
+function openModal() {
+  var sel = document.getElementById("mSnt");
+  sel.innerHTML = "";
+  var codes = [];
+  var i;
+  for (i = 0; i < sants.length; i++) {
+    if (codes.indexOf(sants[i].code) < 0) codes.push(sants[i].code);
+  }
+  for (i = 0; i < items.length; i++) {
+    if (items[i].santiye && codes.indexOf(items[i].santiye) < 0) codes.push(items[i].santiye);
+  }
+  for (i = 0; i < codes.length; i++) {
+    var o = document.createElement("option");
+    o.value = codes[i];
+    o.textContent = codes[i];
+    sel.appendChild(o);
+  }
+  document.getElementById("mIs").value = "";
+  document.getElementById("mAk").value = "";
+  document.getElementById("mNt").value = "";
+  document.getElementById("modal").className = "mov op";
+}
+
+function closeModal() {
+  document.getElementById("modal").className = "mov";
+}
+
+function addItem() {
+  var isVal = document.getElementById("mIs").value;
+  if (!isVal || isVal.trim() === "") { toast("Yapilacak is bos olamaz!"); return; }
+  var newItem = {
+    id: "bek" + String(Date.now()),
+    santiye: document.getElementById("mSnt").value,
+    is: isVal.trim(),
+    durum: 0,
+    aksiyon: document.getElementById("mAk").value,
+    not: document.getElementById("mNt").value
+  };
+  items.push(newItem);
+  fbPut({bekleyen: items}, function() { toast("Gorev eklendi"); });
+  closeModal();
+  render();
+}
+
+document.getElementById("modal").onclick = function(e) {
+  if (e.target === this) closeModal();
+};
+document.getElementById("srch").onkeyup = function() { render(); };
+
+// Baslat
+loadData();
+startPoll();
+</script>
+</body>
+</html>
